@@ -1,0 +1,27 @@
+
+
+spring:
+  data:
+    mongodb:
+      database:
+        PaymentService
+      port:
+        - 27017:27017
+
+  kafka:
+    consumer:
+      group-id: group_id
+      auto-offset-reset: earliest
+    # change this property if you are using your own
+    # Kafka cluster or your Docker IP is different
+    bootstrap-servers: localhost:9096
+
+server:
+  port:
+    18084
+
+
+
+tpd:
+  topic-name: order-topic
+  ##messages-per-request: 10

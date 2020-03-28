@@ -1,0 +1,370 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 526385152 bytes for committing reserved memory.
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   The process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (os_linux.cpp:2720), pid=15115, tid=15126
+#
+# JRE version:  (11.0.4+10) (build )
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (11.0.4+10-LTS, mixed mode, aot, sharing, tiered, compressed oops, g1 gc, linux-amd64)
+# Core dump will be written. Default location: Core dumps may be processed with "/usr/share/apport/apport %p %s %c %d %P" (or dumping to /home/axis/IdeaProjects/PaymentService/core.15115)
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: -Dorg.gradle.native=false -Xmx512m -Dfile.encoding=UTF-8 -Duser.country=IN -Duser.language=en -Duser.variant -ea worker.org.gradle.process.internal.worker.GradleWorkerMain 'Gradle Test Executor 1'
+
+Host: Intel(R) Core(TM) i7-8550U CPU @ 1.80GHz, 8 cores, 31G, Ubuntu 18.04.3 LTS
+Time: Sat Mar 28 15:16:37 2020 IST elapsed time: 0 seconds (0d 0h 0m 0s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00007fb020017000):  JavaThread "Unknown thread" [_thread_in_vm, id=15126, stack(0x00007fb0279e9000,0x00007fb027aea000)]
+
+Stack: [0x00007fb0279e9000,0x00007fb027aea000],  sp=0x00007fb027ae81d0,  free space=1020k
+Native frames: (J=compiled Java code, A=aot compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [libjvm.so+0xe29e27]  VMError::report_and_die(int, char const*, char const*, __va_list_tag*, Thread*, unsigned char*, void*, void*, char const*, int, unsigned long)+0x317
+V  [libjvm.so+0xe2aa8b]  VMError::report_and_die(Thread*, char const*, int, unsigned long, VMErrorType, char const*, __va_list_tag*)+0x2b
+V  [libjvm.so+0x69a845]  report_vm_out_of_memory(char const*, int, unsigned long, VMErrorType, char const*, ...)+0xd5
+V  [libjvm.so+0xc041d8]  os::pd_commit_memory_or_exit(char*, unsigned long, unsigned long, bool, char const*)+0x108
+V  [libjvm.so+0xbfb73d]  os::commit_memory_or_exit(char*, unsigned long, unsigned long, bool, char const*)+0x1d
+V  [libjvm.so+0x7b3aec]  G1PageBasedVirtualSpace::commit_preferred_pages(unsigned long, unsigned long)+0x6c
+V  [libjvm.so+0x7b3d8e]  G1PageBasedVirtualSpace::commit(unsigned long, unsigned long)+0x5e
+V  [libjvm.so+0x7bfb60]  G1RegionsLargerThanCommitSizeMapper::commit_regions(unsigned int, unsigned long, WorkGang*)+0x40
+V  [libjvm.so+0x83b5a9]  HeapRegionManager::commit_regions(unsigned int, unsigned long, WorkGang*)+0x89
+V  [libjvm.so+0x83c1ff]  HeapRegionManager::make_regions_available(unsigned int, unsigned int, WorkGang*)+0x3f
+V  [libjvm.so+0x83c689]  HeapRegionManager::expand_at(unsigned int, unsigned int, WorkGang*) [clone .part.44]+0x119
+V  [libjvm.so+0x77827f]  G1CollectedHeap::expand(unsigned long, WorkGang*, double*)+0xdf
+V  [libjvm.so+0x77898d]  G1CollectedHeap::initialize()+0x68d
+V  [libjvm.so+0xde4841]  Universe::initialize_heap()+0x41
+V  [libjvm.so+0xde4b06]  universe_init()+0x46
+V  [libjvm.so+0x854887]  init_globals()+0x57
+V  [libjvm.so+0xdc3c47]  Threads::create_vm(JavaVMInitArgs*, bool*)+0x347
+V  [libjvm.so+0x910c02]  JNI_CreateJavaVM+0x52
+C  [libjli.so+0x4a66]  JavaMain+0x86
+
+
+---------------  P R O C E S S  ---------------
+
+Threads class SMR info:
+_java_thread_list=0x0000000002235a40, length=0, elements={
+}
+
+Java Threads: ( => current thread )
+
+Other Threads:
+  0x00007fb02003f800 GCTaskThread "GC Thread#0" [stack: 0x00007fb008a35000,0x00007fb008b35000] [id=15127]
+  0x00007fb020050000 ConcurrentGCThread "G1 Main Marker" [stack: 0x00007fb002e00000,0x00007fb002f00000] [id=15128]
+  0x00007fb020052000 ConcurrentGCThread "G1 Conc#0" [stack: 0x00007fb002cfe000,0x00007fb002dfe000] [id=15129]
+
+[error occurred during error reporting (printing all threads), id 0xb, SIGSEGV (0xb) at pc=0x00007fb025f9aa80]
+
+VM state:not at safepoint (not fully initialized)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x00007fb020013a60] Heap_lock - owner thread: 0x00007fb020017000
+
+Heap address: 0x00000000e0000000, size: 512 MB, Compressed Oops mode: Non-zero based: 0x00000000e0000000
+Narrow klass base: 0x0000000000000000, Narrow klass shift: 0
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (0 events):
+No events
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+Events (0 events):
+No events
+
+
+Dynamic libraries:
+00400000-00401000 r-xp 00000000 103:02 9440263                           /usr/lib/jvm/java-11-oracle/bin/java
+00600000-00601000 r--p 00000000 103:02 9440263                           /usr/lib/jvm/java-11-oracle/bin/java
+00601000-00602000 rw-p 00001000 103:02 9440263                           /usr/lib/jvm/java-11-oracle/bin/java
+02232000-02275000 rw-p 00000000 00:00 0                                  [heap]
+ff600000-100000000 ---p 00000000 00:00 0 
+7faff4000000-7faff4021000 rw-p 00000000 00:00 0 
+7faff4021000-7faff8000000 ---p 00000000 00:00 0 
+7faffc000000-7faffc021000 rw-p 00000000 00:00 0 
+7faffc021000-7fb000000000 ---p 00000000 00:00 0 
+7fb000173000-7fb002cfc000 rw-p 00000000 00:00 0 
+7fb002cfc000-7fb002cfd000 ---p 00000000 00:00 0 
+7fb002cfd000-7fb002dfe000 rw-p 00000000 00:00 0 
+7fb002dfe000-7fb002dff000 ---p 00000000 00:00 0 
+7fb002dff000-7fb002f00000 rw-p 00000000 00:00 0 
+7fb002f00000-7fb004000000 ---p 00000000 00:00 0 
+7fb004000000-7fb004021000 rw-p 00000000 00:00 0 
+7fb004021000-7fb008000000 ---p 00000000 00:00 0 
+7fb00802b000-7fb00822b000 ---p 00000000 00:00 0 
+7fb00822b000-7fb008a33000 rw-p 00000000 00:00 0 
+7fb008a33000-7fb008a34000 ---p 00000000 00:00 0 
+7fb008a34000-7fb008b3a000 rw-p 00000000 00:00 0 
+7fb008b3a000-7fb008c20000 ---p 00000000 00:00 0 
+7fb008c20000-7fb008e90000 rwxp 00000000 00:00 0 
+7fb008e90000-7fb0091b1000 ---p 00000000 00:00 0 
+7fb0091b1000-7fb009421000 rwxp 00000000 00:00 0 
+7fb009421000-7fb0106e8000 ---p 00000000 00:00 0 
+7fb0106e8000-7fb010958000 rwxp 00000000 00:00 0 
+7fb010958000-7fb017c20000 ---p 00000000 00:00 0 
+7fb017c20000-7fb020000000 r--s 00000000 103:02 13502028                  /usr/lib/jvm/java-11-oracle/lib/modules
+7fb020000000-7fb020080000 rw-p 00000000 00:00 0 
+7fb020080000-7fb024000000 ---p 00000000 00:00 0 
+7fb0240d9000-7fb0240de000 rw-p 00000000 00:00 0 
+7fb0240de000-7fb0241c4000 ---p 00000000 00:00 0 
+7fb0241c4000-7fb0241df000 r-xp 00000000 103:02 13502009                  /usr/lib/jvm/java-11-oracle/lib/libjimage.so
+7fb0241df000-7fb0243de000 ---p 0001b000 103:02 13502009                  /usr/lib/jvm/java-11-oracle/lib/libjimage.so
+7fb0243de000-7fb0243e0000 r--p 0001a000 103:02 13502009                  /usr/lib/jvm/java-11-oracle/lib/libjimage.so
+7fb0243e0000-7fb0243e1000 rw-p 0001c000 103:02 13502009                  /usr/lib/jvm/java-11-oracle/lib/libjimage.so
+7fb0243e1000-7fb0243e8000 r-xp 00000000 103:02 13502027                  /usr/lib/jvm/java-11-oracle/lib/libzip.so
+7fb0243e8000-7fb0245e7000 ---p 00007000 103:02 13502027                  /usr/lib/jvm/java-11-oracle/lib/libzip.so
+7fb0245e7000-7fb0245e8000 r--p 00006000 103:02 13502027                  /usr/lib/jvm/java-11-oracle/lib/libzip.so
+7fb0245e8000-7fb0245e9000 rw-p 00007000 103:02 13502027                  /usr/lib/jvm/java-11-oracle/lib/libzip.so
+7fb0245e9000-7fb0245f4000 r-xp 00000000 103:02 12981035                  /lib/x86_64-linux-gnu/libnss_files-2.27.so
+7fb0245f4000-7fb0247f3000 ---p 0000b000 103:02 12981035                  /lib/x86_64-linux-gnu/libnss_files-2.27.so
+7fb0247f3000-7fb0247f4000 r--p 0000a000 103:02 12981035                  /lib/x86_64-linux-gnu/libnss_files-2.27.so
+7fb0247f4000-7fb0247f5000 rw-p 0000b000 103:02 12981035                  /lib/x86_64-linux-gnu/libnss_files-2.27.so
+7fb0247f5000-7fb0247fb000 rw-p 00000000 00:00 0 
+7fb0247fb000-7fb024812000 r-xp 00000000 103:02 12981029                  /lib/x86_64-linux-gnu/libnsl-2.27.so
+7fb024812000-7fb024a11000 ---p 00017000 103:02 12981029                  /lib/x86_64-linux-gnu/libnsl-2.27.so
+7fb024a11000-7fb024a12000 r--p 00016000 103:02 12981029                  /lib/x86_64-linux-gnu/libnsl-2.27.so
+7fb024a12000-7fb024a13000 rw-p 00017000 103:02 12981029                  /lib/x86_64-linux-gnu/libnsl-2.27.so
+7fb024a13000-7fb024a15000 rw-p 00000000 00:00 0 
+7fb024a15000-7fb024a20000 r-xp 00000000 103:02 12981046                  /lib/x86_64-linux-gnu/libnss_nis-2.27.so
+7fb024a20000-7fb024c1f000 ---p 0000b000 103:02 12981046                  /lib/x86_64-linux-gnu/libnss_nis-2.27.so
+7fb024c1f000-7fb024c20000 r--p 0000a000 103:02 12981046                  /lib/x86_64-linux-gnu/libnss_nis-2.27.so
+7fb024c20000-7fb024c21000 rw-p 0000b000 103:02 12981046                  /lib/x86_64-linux-gnu/libnss_nis-2.27.so
+7fb024c21000-7fb024c29000 r-xp 00000000 103:02 12981031                  /lib/x86_64-linux-gnu/libnss_compat-2.27.so
+7fb024c29000-7fb024e29000 ---p 00008000 103:02 12981031                  /lib/x86_64-linux-gnu/libnss_compat-2.27.so
+7fb024e29000-7fb024e2a000 r--p 00008000 103:02 12981031                  /lib/x86_64-linux-gnu/libnss_compat-2.27.so
+7fb024e2a000-7fb024e2b000 rw-p 00009000 103:02 12981031                  /lib/x86_64-linux-gnu/libnss_compat-2.27.so
+7fb024e2b000-7fb024e54000 r-xp 00000000 103:02 13502005                  /usr/lib/jvm/java-11-oracle/lib/libjava.so
+7fb024e54000-7fb025054000 ---p 00029000 103:02 13502005                  /usr/lib/jvm/java-11-oracle/lib/libjava.so
+7fb025054000-7fb025055000 r--p 00029000 103:02 13502005                  /usr/lib/jvm/java-11-oracle/lib/libjava.so
+7fb025055000-7fb025057000 rw-p 0002a000 103:02 13502005                  /usr/lib/jvm/java-11-oracle/lib/libjava.so
+7fb025057000-7fb025064000 r-xp 00000000 103:02 13502026                  /usr/lib/jvm/java-11-oracle/lib/libverify.so
+7fb025064000-7fb025263000 ---p 0000d000 103:02 13502026                  /usr/lib/jvm/java-11-oracle/lib/libverify.so
+7fb025263000-7fb025265000 r--p 0000c000 103:02 13502026                  /usr/lib/jvm/java-11-oracle/lib/libverify.so
+7fb025265000-7fb025266000 rw-p 0000e000 103:02 13502026                  /usr/lib/jvm/java-11-oracle/lib/libverify.so
+7fb025266000-7fb02526d000 r-xp 00000000 103:02 12981086                  /lib/x86_64-linux-gnu/librt-2.27.so
+7fb02526d000-7fb02546c000 ---p 00007000 103:02 12981086                  /lib/x86_64-linux-gnu/librt-2.27.so
+7fb02546c000-7fb02546d000 r--p 00006000 103:02 12981086                  /lib/x86_64-linux-gnu/librt-2.27.so
+7fb02546d000-7fb02546e000 rw-p 00007000 103:02 12981086                  /lib/x86_64-linux-gnu/librt-2.27.so
+7fb02546e000-7fb02560b000 r-xp 00000000 103:02 12981008                  /lib/x86_64-linux-gnu/libm-2.27.so
+7fb02560b000-7fb02580a000 ---p 0019d000 103:02 12981008                  /lib/x86_64-linux-gnu/libm-2.27.so
+7fb02580a000-7fb02580b000 r--p 0019c000 103:02 12981008                  /lib/x86_64-linux-gnu/libm-2.27.so
+7fb02580b000-7fb02580c000 rw-p 0019d000 103:02 12981008                  /lib/x86_64-linux-gnu/libm-2.27.so
+7fb02580c000-7fb02694c000 r-xp 00000000 103:02 13502039                  /usr/lib/jvm/java-11-oracle/lib/server/libjvm.so
+7fb02694c000-7fb026b4b000 ---p 01140000 103:02 13502039                  /usr/lib/jvm/java-11-oracle/lib/server/libjvm.so
+7fb026b4b000-7fb026c0a000 r--p 0113f000 103:02 13502039                  /usr/lib/jvm/java-11-oracle/lib/server/libjvm.so
+7fb026c0a000-7fb026c43000 rw-p 011fe000 103:02 13502039                  /usr/lib/jvm/java-11-oracle/lib/server/libjvm.so
+7fb026c43000-7fb026c9a000 rw-p 00000000 00:00 0 
+7fb026c9a000-7fb026e81000 r-xp 00000000 103:02 12980945                  /lib/x86_64-linux-gnu/libc-2.27.so
+7fb026e81000-7fb027081000 ---p 001e7000 103:02 12980945                  /lib/x86_64-linux-gnu/libc-2.27.so
+7fb027081000-7fb027085000 r--p 001e7000 103:02 12980945                  /lib/x86_64-linux-gnu/libc-2.27.so
+7fb027085000-7fb027087000 rw-p 001eb000 103:02 12980945                  /lib/x86_64-linux-gnu/libc-2.27.so
+7fb027087000-7fb02708b000 rw-p 00000000 00:00 0 
+7fb02708b000-7fb02708e000 r-xp 00000000 103:02 12980968                  /lib/x86_64-linux-gnu/libdl-2.27.so
+7fb02708e000-7fb02728d000 ---p 00003000 103:02 12980968                  /lib/x86_64-linux-gnu/libdl-2.27.so
+7fb02728d000-7fb02728e000 r--p 00002000 103:02 12980968                  /lib/x86_64-linux-gnu/libdl-2.27.so
+7fb02728e000-7fb02728f000 rw-p 00003000 103:02 12980968                  /lib/x86_64-linux-gnu/libdl-2.27.so
+7fb02728f000-7fb02729f000 r-xp 00000000 103:02 13501990                  /usr/lib/jvm/java-11-oracle/lib/jli/libjli.so
+7fb02729f000-7fb02749e000 ---p 00010000 103:02 13501990                  /usr/lib/jvm/java-11-oracle/lib/jli/libjli.so
+7fb02749e000-7fb02749f000 r--p 0000f000 103:02 13501990                  /usr/lib/jvm/java-11-oracle/lib/jli/libjli.so
+7fb02749f000-7fb0274a0000 rw-p 00010000 103:02 13501990                  /usr/lib/jvm/java-11-oracle/lib/jli/libjli.so
+7fb0274a0000-7fb0274ba000 r-xp 00000000 103:02 12981078                  /lib/x86_64-linux-gnu/libpthread-2.27.so
+7fb0274ba000-7fb0276b9000 ---p 0001a000 103:02 12981078                  /lib/x86_64-linux-gnu/libpthread-2.27.so
+7fb0276b9000-7fb0276ba000 r--p 00019000 103:02 12981078                  /lib/x86_64-linux-gnu/libpthread-2.27.so
+7fb0276ba000-7fb0276bb000 rw-p 0001a000 103:02 12981078                  /lib/x86_64-linux-gnu/libpthread-2.27.so
+7fb0276bb000-7fb0276bf000 rw-p 00000000 00:00 0 
+7fb0276bf000-7fb0276db000 r-xp 00000000 103:02 12981117                  /lib/x86_64-linux-gnu/libz.so.1.2.11
+7fb0276db000-7fb0278da000 ---p 0001c000 103:02 12981117                  /lib/x86_64-linux-gnu/libz.so.1.2.11
+7fb0278da000-7fb0278db000 r--p 0001b000 103:02 12981117                  /lib/x86_64-linux-gnu/libz.so.1.2.11
+7fb0278db000-7fb0278dc000 rw-p 0001c000 103:02 12981117                  /lib/x86_64-linux-gnu/libz.so.1.2.11
+7fb0278dc000-7fb027903000 r-xp 00000000 103:02 12980917                  /lib/x86_64-linux-gnu/ld-2.27.so
+7fb0279bb000-7fb0279e2000 rw-p 00000000 00:00 0 
+7fb0279e2000-7fb0279e9000 ---p 00000000 00:00 0 
+7fb0279e9000-7fb0279ed000 ---p 00000000 00:00 0 
+7fb0279ed000-7fb027aee000 rw-p 00000000 00:00 0 
+7fb027af9000-7fb027b01000 rw-s 00000000 103:02 13149735                  /tmp/hsperfdata_axis/15115
+7fb027b01000-7fb027b02000 ---p 00000000 00:00 0 
+7fb027b02000-7fb027b03000 r--p 00000000 00:00 0 
+7fb027b03000-7fb027b04000 r--p 00027000 103:02 12980917                  /lib/x86_64-linux-gnu/ld-2.27.so
+7fb027b04000-7fb027b05000 rw-p 00028000 103:02 12980917                  /lib/x86_64-linux-gnu/ld-2.27.so
+7fb027b05000-7fb027b06000 rw-p 00000000 00:00 0 
+7fff5260d000-7fff5262f000 rw-p 00000000 00:00 0                          [stack]
+7fff52650000-7fff52653000 r--p 00000000 00:00 0                          [vvar]
+7fff52653000-7fff52654000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+
+
+VM Arguments:
+jvm_args: -Dorg.gradle.native=false -Xmx512m -Dfile.encoding=UTF-8 -Duser.country=IN -Duser.language=en -Duser.variant -ea 
+java_command: worker.org.gradle.process.internal.worker.GradleWorkerMain 'Gradle Test Executor 1'
+java_class_path (initial): /home/axis/.gradle/caches/5.6.2/workerMain/gradle-worker.jar:/home/axis/IdeaProjects/PaymentService/build/classes/java/test:/home/axis/IdeaProjects/PaymentService/build/classes/kotlin/test:/home/axis/IdeaProjects/PaymentService/build/resources/test:/home/axis/IdeaProjects/PaymentService/build/classes/java/main:/home/axis/IdeaProjects/PaymentService/build/classes/kotlin/main:/home/axis/IdeaProjects/PaymentService/build/resources/main:/home/axis/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-data-mongodb-reactive/2.2.5.RELEASE/53285c1ada285664bfdee177f29b8e30e4dda7f4/spring-boot-starter-data-mongodb-reactive-2.2.5.RELEASE.jar:/home/axis/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-webflux/2.2.5.RELEASE/6e7201d572b8681fced84d515e1c1ee12524235/spring-boot-starter-webflux-2.2.5.RELEASE.jar:/home/axis/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.module/jackson-module-kotlin/2.10.2/939796de1ff084e55fc7bbfc9d34cb0b8ac97fb8/jackson-module-kotlin-2.10.2.jar:/home/axis/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-reflect/1.3.61/2e07c9a84c9e118efb70eede7e579fd663932122/kotlin-reflect-1.3.61.jar:/home/axis/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-jdk8/1.3.61/e91d61b7cfd9a45566b580fef18bbd5c32d505b5/kotlin-stdlib-jdk8-1.3.61.jar:/home/axis/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-coroutines-reactor/1.3.3/fd99af66ff5ed92ab9fda7f55d0c353cab76c6e9/kotlinx-coroutines-reactor-1.3.3.jar:/home/axis/.gradle/caches/modules-2/files-2.1/org.springframework.kafka/spring-kafka/2.3.6.RELEASE/73607ae3d77b6e1a987aace92874751ae9aed6f6/spring-kafka-2.3.6.RELEASE.jar:/home/axis/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-test/2.2.5.RELEASE/fade3275bb7ba0b17370767fe89cb4895f2289a3/spring-boot-starter-test-2.2.5.RELEASE.jar:/home/axis/.gradle/caches/modules-2/files-2.1/io.projectreactor/r
+Launcher Type: SUN_STANDARD
+
+[Global flags]
+     intx CICompilerCount                          = 4                                         {product} {ergonomic}
+     uint ConcGCThreads                            = 2                                         {product} {ergonomic}
+     uint G1ConcRefinementThreads                  = 8                                         {product} {ergonomic}
+   size_t G1HeapRegionSize                         = 1048576                                   {product} {ergonomic}
+    uintx GCDrainStackTargetSize                   = 64                                        {product} {ergonomic}
+   size_t InitialHeapSize                          = 526385152                                 {product} {ergonomic}
+   size_t MarkStackSize                            = 4194304                                   {product} {ergonomic}
+   size_t MaxHeapSize                              = 536870912                                 {product} {command line}
+   size_t MinHeapDeltaBytes                        = 1048576                                   {product} {ergonomic}
+    uintx NonNMethodCodeHeapSize                   = 5835340                                {pd product} {ergonomic}
+    uintx NonProfiledCodeHeapSize                  = 122911450                              {pd product} {ergonomic}
+    uintx ProfiledCodeHeapSize                     = 122911450                              {pd product} {ergonomic}
+    uintx ReservedCodeCacheSize                    = 251658240                              {pd product} {ergonomic}
+     bool SegmentedCodeCache                       = true                                      {product} {ergonomic}
+     bool UseCompressedClassPointers               = true                                 {lp64_product} {ergonomic}
+     bool UseCompressedOops                        = true                                 {lp64_product} {ergonomic}
+     bool UseG1GC                                  = true                                      {product} {ergonomic}
+
+Logging:
+Log output configuration:
+ #0: stdout all=warning uptime,level,tags
+ #1: stderr all=off uptime,level,tags
+
+Environment Variables:
+JAVA_HOME=/usr/lib/jvm/java-11-oracle
+PATH=/opt/gradle/gradle-5.6.2/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/lib/jvm/java-11-oracle/bin:/usr/lib/jvm/java-11-oracle/db/bin
+USERNAME=axis
+SHELL=/bin/bash
+DISPLAY=:0
+
+Signal Handlers:
+SIGSEGV: [libjvm.so+0xe2b860], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGBUS: [libjvm.so+0xe2b860], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGFPE: [libjvm.so+0xe2b860], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGPIPE: [libjvm.so+0xbffef0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGXFSZ: [libjvm.so+0xbffef0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGILL: [libjvm.so+0xe2b860], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGUSR2: [libjvm.so+0xbffd90], sa_mask[0]=00100000000000000000000000000000, sa_flags=SA_RESTART|SA_SIGINFO
+SIGHUP: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGINT: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGTERM: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGQUIT: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+
+
+---------------  S Y S T E M  ---------------
+
+OS:DISTRIB_ID=Ubuntu
+DISTRIB_RELEASE=18.04
+DISTRIB_CODENAME=bionic
+DISTRIB_DESCRIPTION="Ubuntu 18.04.3 LTS"
+uname:Linux 5.0.0-27-generic #28~18.04.1-Ubuntu SMP Thu Aug 22 03:00:32 UTC 2019 x86_64
+libc:glibc 2.27 NPTL 2.27 
+rlimit: STACK 8192k, CORE 0k, NPROC 128049, NOFILE 1048576, AS infinity, DATA infinity, FSIZE infinity
+load average:4.18 3.28 2.83
+
+/proc/meminfo:
+MemTotal:       32828484 kB
+MemFree:          249880 kB
+MemAvailable:     168380 kB
+Buffers:           14724 kB
+Cached:          2620108 kB
+SwapCached:        31524 kB
+Active:         23426532 kB
+Inactive:        7385540 kB
+Active(anon):   23353808 kB
+Inactive(anon):  7307520 kB
+Active(file):      72724 kB
+Inactive(file):    78020 kB
+Unevictable:      562648 kB
+Mlocked:              80 kB
+SwapTotal:       2097148 kB
+SwapFree:              0 kB
+Dirty:              1456 kB
+Writeback:             0 kB
+AnonPages:      28709768 kB
+Mapped:          1150424 kB
+Shmem:           2482936 kB
+KReclaimable:     207524 kB
+Slab:             603152 kB
+SReclaimable:     207524 kB
+SUnreclaim:       395628 kB
+KernelStack:       83840 kB
+PageTables:       262932 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:    18511388 kB
+Committed_AS:   70978372 kB
+VmallocTotal:   34359738367 kB
+VmallocUsed:           0 kB
+VmallocChunk:          0 kB
+Percpu:            12608 kB
+HardwareCorrupted:     0 kB
+AnonHugePages:      2048 kB
+ShmemHugePages:        0 kB
+ShmemPmdMapped:        0 kB
+CmaTotal:              0 kB
+CmaFree:               0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+Hugetlb:               0 kB
+DirectMap4k:      978528 kB
+DirectMap2M:    31420416 kB
+DirectMap1G:     1048576 kB
+
+
+/proc/sys/kernel/threads-max (system-wide limit on the number of threads):
+256099
+
+
+/proc/sys/vm/max_map_count (maximum number of memory map areas a process may have):
+65530
+
+
+/proc/sys/kernel/pid_max (system-wide limit on number of process identifiers):
+32768
+
+
+
+container (cgroup) information:
+container_type: cgroupv1
+cpu_cpuset_cpus: 0-7
+cpu_memory_nodes: 0
+active_processor_count: 8
+cpu_quota: -1
+cpu_period: 100000
+cpu_shares: -1
+memory_limit_in_bytes: -1
+memory_and_swap_limit_in_bytes: -2
+memory_soft_limit_in_bytes: -1
+memory_usage_in_bytes: 19570139136
+memory_max_usage_in_bytes: 22448529408
+
+
+CPU:total 8 (initial active 8) (4 cores per cpu, 2 threads per core) family 6 model 142 stepping 10, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, avx2, aes, clmul, erms, 3dnowpref, lzcnt, ht, tsc, tscinvbit, bmi1, bmi2, adx, fma
+CPU Model and flags from /proc/cpuinfo:
+model name	: Intel(R) Core(TM) i7-8550U CPU @ 1.80GHz
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf tsc_known_freq pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb invpcid_single pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid ept_ad fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid mpx rdseed adx smap clflushopt intel_pt xsaveopt xsavec xgetbv1 xsaves dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp md_clear flush_l1d
+
+Memory: 4k page, physical 32828484k(249880k free), swap 2097148k(0k free)
+
+vm_info: Java HotSpot(TM) 64-Bit Server VM (11.0.4+10-LTS) for linux-amd64 JRE (11.0.4+10-LTS), built on Jul  4 2019 15:26:10 by "mach5one" with gcc 7.3.0
+
+END.
